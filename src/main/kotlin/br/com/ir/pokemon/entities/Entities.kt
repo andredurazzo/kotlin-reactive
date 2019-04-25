@@ -8,7 +8,7 @@ import java.util.Date
 @Table("Trainer")
 data class Trainer(
     @Id
-    val id: Long? = null,
+    val id: Int? = null,
     val name:String,
     val birthdate: Date,
     val created_at:Date?,

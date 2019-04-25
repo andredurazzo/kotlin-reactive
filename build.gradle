@@ -70,7 +70,9 @@ dependencies {
 	//implementation 'org.springframework.data:spring-data-jdbc:1.0.0.r2dbc-SNAPSHOT'
 	implementation group: 'io.r2dbc', name: 'r2dbc-spi', version: '1.0.0.M7'
 	implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version: '1.0.0.M7'
-
+	implementation 'io.projectreactor:reactor-core'
+	
+	
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	//runtimeOnly 'org.postgresql:postgresql'
 	//kapt 'org.springframework.boot:spring-boot-configuration-processor'

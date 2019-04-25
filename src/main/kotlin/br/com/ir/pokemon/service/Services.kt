@@ -27,7 +27,7 @@ class TrainerService( @Autowired private var repository: TrainerRepository){
         Utils.checkIsNumber(id)
 
 
-        return repository.findById(id.toLong())
+        return repository.findById(id.toInt())
     }
 
     fun updateTrainer(request: TrainerRequest): Mono<Trainer> {

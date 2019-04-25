@@ -9,7 +9,7 @@ import org.springframework.data.r2dbc.repository.R2dbcRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface TrainerRepository : R2dbcRepository<Trainer, Long> {
+interface TrainerRepository : R2dbcRepository<Trainer, Int> {
 
     //fun findAllByOrderByCreated_atDesc(): Iterable<Trainer>
 }

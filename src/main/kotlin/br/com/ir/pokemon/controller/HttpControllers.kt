@@ -32,8 +32,8 @@ class TrainerController {
 
     @PostMapping(value = "/")
     @ResponseStatus(value = HttpStatus.CREATED)
-    fun addTrainer(@RequestBody request: TrainerRequest ){
-        service.addTrainer(request)
+    fun addTrainer(@RequestBody request: TrainerRequest ): Mono<Trainer>{
+        return service.addTrainer(request)
 
     }
 
