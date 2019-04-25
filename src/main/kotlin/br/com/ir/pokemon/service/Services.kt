@@ -11,9 +11,9 @@ import reactor.core.publisher.Mono
 
 
 @Service
-class TrainerService{
+class TrainerService( @Autowired private var repository: TrainerRepository){
 
-    @Autowired lateinit private var repository: TrainerRepository
+
     fun addTrainer(request: TrainerRequest): Mono<Trainer> {
         checkNotNull(request.birthdate)
         checkNotNull(request.nickName)
