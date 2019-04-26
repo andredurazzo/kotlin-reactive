@@ -6,6 +6,7 @@ import br.com.ir.pokemon.service.TrainerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -42,5 +43,9 @@ class TrainerController {
 
         return service.updateTrainer(request)
     }
+
+    @DeleteMapping(value = ["/{id}"])
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    fun deleteTrainer(@PathVariable id:String) = service.deleteTrainer(id)
 
 }
