@@ -2,7 +2,8 @@ package br.com.ir.pokemon.entities
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
-import java.util.Date
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 
 @Table("Trainer")
@@ -10,9 +11,9 @@ data class Trainer(
     @Id
     val id: Int? = null,
     val name:String,
-    val birthdate: Date,
-    val created_at:Date?,
-    val updated_at: Date?,
+    val birthdate: LocalDate,
+    val created_at:LocalDateTime?,
+    val updated_at: LocalDateTime?,
     val nickName: String
 
 )
@@ -30,8 +31,8 @@ data class TrainerCatcher(
 data class CatcherDetails(
     @Id
     val id:Long? = null,
-    val created_at: Date,
-    val updated_at: Date,
+    val created_at: LocalDateTime,
+    val updated_at: LocalDateTime?,
     val level_catcher:Long,
     val current_level: Long,
     val namePokemon: String,

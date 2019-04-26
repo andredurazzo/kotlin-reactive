@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-
+import java.time.LocalDateTime
 
 @Service
 class TrainerService( @Autowired private var repository: TrainerRepository){
@@ -41,7 +41,8 @@ class TrainerService( @Autowired private var repository: TrainerRepository){
     }
 
     fun updateTrainer(request: TrainerRequest): Mono<Trainer> {
-        log.info {  }
+        log.info { "updated trainer [{$request}]"}
+        request.update_at = LocalDateTime.now()
         return addTrainer(request)
 
     }
