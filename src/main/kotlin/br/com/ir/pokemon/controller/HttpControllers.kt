@@ -2,8 +2,11 @@ package br.com.ir.pokemon.controller
 
 import br.com.ir.pokemon.entities.PokemonTypes
 import br.com.ir.pokemon.entities.Trainer
+import br.com.ir.pokemon.model.PokemonRequest
+import br.com.ir.pokemon.model.PokemonResponse
 import br.com.ir.pokemon.model.TrainerRequest
 import br.com.ir.pokemon.repository.PokemonTypesRepository
+import br.com.ir.pokemon.service.PokemonService
 import br.com.ir.pokemon.service.TrainerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.reactive.ReactiveCrudRepository
@@ -64,4 +67,21 @@ class PokemonTypesController(){
     fun findAll():Flux<PokemonTypes> {
         return repository.findAll()
     }
+}
+
+@RestController
+@RequestMapping("/api/pokemon")
+class PokemonController(){
+    @Autowired lateinit var service: PokemonService
+
+    @GetMapping(path =  ["/"], produces = [MediaType.APPLICATION_STREAM_JSON_VALUE])
+    fun findAll():Flux<PokemonResponse>{
+
+        return service.findAll()
+    }
+
+    fun save(@RequestBody request: PokemonRequest):Mono<PokemonResponse>{
+        return service.addPokemon(request)
+    }
+
 }

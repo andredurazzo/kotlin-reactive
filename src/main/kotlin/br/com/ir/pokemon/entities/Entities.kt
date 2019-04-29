@@ -1,5 +1,6 @@
 package br.com.ir.pokemon.entities
 
+import br.com.ir.pokemon.model.ResponsePokemon
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDate

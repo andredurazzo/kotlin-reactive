@@ -2,6 +2,7 @@ package br.com.ir.pokemon.repository
 
 
 import br.com.ir.pokemon.entities.Pokemon
+import br.com.ir.pokemon.entities.PokemonDetails
 import br.com.ir.pokemon.entities.PokemonTypes
 import br.com.ir.pokemon.entities.Trainer
 import org.springframework.data.r2dbc.repository.R2dbcRepository
@@ -18,6 +19,10 @@ interface PokemonRepository : R2dbcRepository<Pokemon, Long> {
 
     //
 }
+
+@Repository
+interface  PokemonDetailsRepository: R2dbcRepository<PokemonDetails, Pokemon>
+
 @Repository
 interface PokemonTypesRepository : R2dbcRepository<PokemonTypes, Long>{
     //

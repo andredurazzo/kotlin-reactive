@@ -1,5 +1,7 @@
 package br.com.ir.pokemon.model
 
+import br.com.ir.pokemon.entities.Pokemon
+import br.com.ir.pokemon.entities.PokemonDetails
 import br.com.ir.pokemon.entities.Trainer
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -38,3 +40,8 @@ data class TrainerRequest(
         }
 
 }
+
+data class PokemonRequest(
+    var pokemon: Pokemon?,
+    var baseStatus:PokemonDetails?
+)

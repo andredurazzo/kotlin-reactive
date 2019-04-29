@@ -2,7 +2,11 @@ package br.com.ir.pokemon.service
 
 import br.com.ir.pokemon.entities.Trainer
 import br.com.ir.pokemon.exceptions.NotFoundException
+import br.com.ir.pokemon.model.PokemonRequest
+import br.com.ir.pokemon.model.PokemonResponse
 import br.com.ir.pokemon.model.TrainerRequest
+import br.com.ir.pokemon.repository.PokemonDetailsRepository
+import br.com.ir.pokemon.repository.PokemonRepository
 import br.com.ir.pokemon.repository.TrainerRepository
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
@@ -52,6 +56,25 @@ class TrainerService( @Autowired private var repository: TrainerRepository){
         return  findById(id)
             .flatMap { trainer -> repository.delete(trainer) }
             .then(Mono.empty())
+    }
+
+}
+
+@Service
+class PokemonService(@Autowired private var repository: PokemonRepository, @Autowired private var  detailsRepository:PokemonDetailsRepository  ){
+
+    fun findAll():Flux<PokemonResponse>{
+
+        return repository.findAll().map{
+            PokemonResponse.Builder().pokemon(it).baseStatus(detailsRepository.findById(it).block()!!).build()
+        }
+    }
+
+    fun addPokemon(request: PokemonRequest): Mono<PokemonResponse>{
+
+
+        repository.save(request.pokemon!!)
+        return Mono.empty()
     }
 
 }
