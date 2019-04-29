@@ -66,7 +66,7 @@ class PokemonService(@Autowired private var repository: PokemonRepository, @Auto
     fun findAll():Flux<PokemonResponse>{
 
         return repository.findAll().map{
-            PokemonResponse.Builder().pokemon(it).baseStatus(detailsRepository.findById(it).block()!!).build()
+            PokemonResponse.Builder().pokemon(it).baseStatus(detailsRepository.findById(it).block()).build()
         }
     }
 

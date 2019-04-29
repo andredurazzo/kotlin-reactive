@@ -10,7 +10,7 @@ data class PokemonResponse(
 
     data class  Builder(var pokemon: Pokemon? = null, var baseStatus: PokemonDetails? = null){
         fun pokemon(pokemon: Pokemon) =apply { this.pokemon = pokemon }
-        fun baseStatus(baseStatus: PokemonDetails) = apply { this.baseStatus = baseStatus }
+        fun baseStatus(baseStatus: PokemonDetails?) = apply { this.baseStatus = baseStatus }
         fun build() = PokemonResponse(pokemon, baseStatus)
     }
 }
